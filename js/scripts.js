@@ -3,7 +3,7 @@ function init (){
     // setting up the scene, the camera(this will need field of view, aspect ratio and near/far clipping planes to be defined) and the renderer (to convert our 3d image to 2d so that we can be able to see it.)
     var scene = new THREE.Scene();
     
-    var box = getBox(w, h, d);
+    var box = getBox(1, 1, 1);
     scene.add(box);
 
     var camera = new THREE.PerspectiveCamera(
@@ -12,6 +12,10 @@ function init (){
         1,
         1000
     );
+    camera.position.x = 1;
+    camera.position.y = 2;
+    camera.position.z = 5;
+    camera.lookAt(new THREE.Vector3(0, 0, 0))
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('webGl').appendChild(renderer.domElement);
