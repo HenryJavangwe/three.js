@@ -4,7 +4,12 @@ function init (){
     var scene = new THREE.Scene();
     
     var box = getBox(1, 1, 1);
+    var plane = getPlane(4)
+    // whatever object we create, we'll have to append it, for it to show on the scene.
+
     scene.add(box);
+    scene.add(plane);
+
 
     var camera = new THREE.PerspectiveCamera(
         45, 
@@ -24,9 +29,9 @@ function init (){
         camera
     )
 }
-
+// creating the box
 function getBox(w, h, d){
-    var geometry = new THREE.BoxGeometry(1, 1, 1);//we create the shape by defining the geometry and the material then we'll combine these two to create a mesh.
+    var geometry = new THREE.BoxGeometry(w, h, d);//we create the shape by defining the geometry and the material then we'll combine these two to create a mesh.
     var material = new THREE.MeshBasicMaterial({
         color: 0x00ff00
     });
@@ -37,5 +42,18 @@ function getBox(w, h, d){
 
     return mesh;
 }
+// creating a plane -> works with only with and height so we'll pass a single argument
+function getPlane(size){
+    var geometry = new THREE.PlaneGeometry(size, size);//we create the shape by defining the geometry and the material then we'll combine these two to create a mesh.
+    var material = new THREE.MeshBasicMaterial({
+        color: 0xff0000,
+        side: THREE.DoubleSide //by default 2d objects don't have their other side showing so we define that in-order to be able to see the other side.
+    });
+    var mesh = new THREE.Mesh(
+        geometry,
+        material
+    );
 
+    return mesh;
+}
 init();
