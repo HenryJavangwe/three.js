@@ -27,10 +27,7 @@ function init (){
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('webGl').appendChild(renderer.domElement);
-    renderer.render(
-        scene,
-        camera
-    )
+    update( renderer, scene, camera); //instead of calling the renderer.render method to update out scene, we'll be calling out the update function
 
     return scene;
 }
@@ -60,6 +57,19 @@ function getPlane(size){
     );
 
     return mesh;
+}
+
+// update function that'll handle our updates in the animation
+
+function update (renderer, scene, camera){//inside the update function is where we'll execute the renderer.render method
+    renderer.render(
+        scene,
+        camera
+    );
+    // the request animation will take a call back that'll bee calling the update function in a recursive manner
+    requestAnimationFrame(function(){
+        update(renderer, scene, camera);
+    })
 }
 
 var scene = init();
