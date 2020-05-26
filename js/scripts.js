@@ -5,7 +5,7 @@ function init (){
     scene.fog = new THREE.FogExp2(0xffffff, 0.2);//added fog to the scene
     
     var box = getBox(1, 1, 1);
-    var plane = getPlane(10);//increased the size of the plane
+    var plane = getPlane(15);//increased the size of the plane
 
     plane.name = 'plane-1';//after we name an obj we can locate it by calling the get obj by name method on he parent obj.
 
@@ -31,6 +31,7 @@ function init (){
     camera.lookAt(new THREE.Vector3(0, 0, 0))
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0xffffff)
     document.getElementById('webGl').appendChild(renderer.domElement);
     update( renderer, scene, camera); //instead of calling the renderer.render method to update out scene, we'll be calling out the update function
 
