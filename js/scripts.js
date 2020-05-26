@@ -9,9 +9,11 @@ function init (){
     // setting the box position and rotating the plane
     box.position.y = box.geometry.parameters.height/2;
     plane.rotation.x = Math.PI/2;
+    plane.position.y = 1;
+
     // whatever object we create, we'll have to append it, for it to show on the scene.
 
-    scene.add(box);
+    plane.add(box);//adding the box to the plane makes the box a child to the plane.
     scene.add(plane);
 
     var camera = new THREE.PerspectiveCamera(
