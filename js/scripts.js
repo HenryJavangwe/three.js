@@ -2,9 +2,10 @@ function init (){
     console.log('connected and rolling...')
     // setting up the scene, the camera(this will need field of view, aspect ratio and near/far clipping planes to be defined) and the renderer (to convert our 3d image to 2d so that we can be able to see it.)
     var scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0xffffff, 0.2);//added fog to the scene
     
     var box = getBox(1, 1, 1);
-    var plane = getPlane(4);
+    var plane = getPlane(10);//increased the size of the plane
 
     plane.name = 'plane-1';//after we name an obj we can locate it by calling the get obj by name method on he parent obj.
 
