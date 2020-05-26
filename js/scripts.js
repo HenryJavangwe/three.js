@@ -11,11 +11,11 @@ function init (){
     // setting the box position and rotating the plane
     box.position.y = box.geometry.parameters.height/2;
     plane.rotation.x = Math.PI/2;
-    plane.position.y = 1;
+    // plane.position.y = 1;
 
     // whatever object we create, we'll have to append it, for it to show on the scene.
 
-    plane.add(box);//adding the box to the plane makes the box a child to the plane.
+    scene.add(box);//adding the box to the plane makes the box a child to the plane.
     scene.add(plane);
 
     var camera = new THREE.PerspectiveCamera(
@@ -70,16 +70,15 @@ function update (renderer, scene, camera){//inside the update function is where 
         scene,
         camera
     );
-    //getting the obj by name
-    var plane = scene.getObjectByName('plane-1');
-    // plane.rotation.x += 0.05;
-    plane.rotation.y += 0.002;
-    plane.rotation.z += 0.002;
-
-    scene.traverse(function(child){
-        child.scale.x+= 0.001;
-    })
-    // the request animation will take a call back that'll bee calling the update function in a recursive manner
+        //getting the obj by name
+        // var plane = scene.getObjectByName('plane-1');
+        // plane.rotation.x += 0.05;
+        // plane.rotation.y += 0.002;
+        // plane.rotation.z += 0.002;
+        // scene.traverse(function(child){
+        //     child.scale.x+= 0.001;
+        // })
+        // the request animation will take a call back that'll bee calling the update function in a recursive manner
     requestAnimationFrame(function(){
         update(renderer, scene, camera);
     })
