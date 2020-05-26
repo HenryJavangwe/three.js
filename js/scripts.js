@@ -6,6 +6,8 @@ function init (){
     var box = getBox(1, 1, 1);
     var plane = getPlane(4);
 
+    plane.name = 'plane-1';//after we name an obj we can locate it by calling the get obj by name method on he parent obj.
+
     // setting the box position and rotating the plane
     box.position.y = box.geometry.parameters.height/2;
     plane.rotation.x = Math.PI/2;
