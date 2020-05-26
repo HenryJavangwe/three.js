@@ -4,12 +4,15 @@ function init (){
     var scene = new THREE.Scene();
     
     var box = getBox(1, 1, 1);
-    var plane = getPlane(4)
+    var plane = getPlane(4);
+
+    // setting the box position and rotating the plane
+    box.position.y = box.geometry.parameters.height/2;
+    plane.rotation.x = Math.PI/2;
     // whatever object we create, we'll have to append it, for it to show on the scene.
 
     scene.add(box);
     scene.add(plane);
-
 
     var camera = new THREE.PerspectiveCamera(
         45, 
@@ -28,6 +31,8 @@ function init (){
         scene,
         camera
     )
+
+    return scene;
 }
 // creating the box
 function getBox(w, h, d){
@@ -56,4 +61,5 @@ function getPlane(size){
 
     return mesh;
 }
-init();
+
+var scene = init();
