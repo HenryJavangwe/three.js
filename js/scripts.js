@@ -75,6 +75,10 @@ function update (renderer, scene, camera){//inside the update function is where 
     // plane.rotation.x += 0.05;
     plane.rotation.y += 0.002;
     plane.rotation.z += 0.002;
+
+    scene.traverse(function(child){
+        child.scale.x+= 0.001;
+    })
     // the request animation will take a call back that'll bee calling the update function in a recursive manner
     requestAnimationFrame(function(){
         update(renderer, scene, camera);
