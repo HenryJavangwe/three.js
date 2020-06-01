@@ -36,6 +36,7 @@
         <script src="./js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+        <script src="./OrbitControls.js"></script> <!--importing OrbitControls -->
         <script>
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -63,9 +64,12 @@
             scene.add( sphere3 );
 
             camera.position.z = 70;//set the camera position
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement)
+            controls.minDistance = 1
+            controls.maxDistance = 1000
+
             //before you render, create an animate function
-            
-            
              const animate = () => {
                 requestAnimationFrame( animate );
                 sphere.rotation.x += 0.01;
@@ -77,21 +81,12 @@
                 sphere3.rotation.x += 0.01;
                 sphere3.rotation.y += 0.01;
 
+                controls.update();
                 // cube.rotation.x += 0.01;
                 // cube.rotation.y += 0.01;
                 renderer.render( scene, camera );
             }
             animate();
-
-            
-
-            // function animate() {
-            //     requestAnimationFrame( animate );
-            //     cube.rotation.x += 0.01;
-            //     cube.rotation.y += 0.01;
-            //     renderer.render( scene, camera );
-            // }
-            // 
 
         </script>
     </body>
