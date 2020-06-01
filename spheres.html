@@ -68,7 +68,15 @@
             
              const animate = () => {
                 requestAnimationFrame( animate );
-                
+                sphere.rotation.x += 0.01;
+                sphere.rotation.y += 0.01;
+
+                sphere2.rotation.x += 0.01;
+                sphere2.rotation.y += 0.01;//animated the sphere to have them rotating.
+
+                sphere3.rotation.x += 0.01;
+                sphere3.rotation.y += 0.01;
+
                 // cube.rotation.x += 0.01;
                 // cube.rotation.y += 0.01;
                 renderer.render( scene, camera );
