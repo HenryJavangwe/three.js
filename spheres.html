@@ -44,10 +44,23 @@
             renderer.setSize( window.innerWidth, window.innerHeight );
             document.body.appendChild( renderer.domElement );
 
+            //sphere1
             var geometry = new THREE.SphereGeometry(10, 10, 10);//radius, width and height parameters
             var material = new THREE.MeshNormalMaterial( { wireframe:true } );
             var sphere = new THREE.Mesh( geometry, material );//creating a mesh
             scene.add( sphere );
+            //sphere2
+            var geometry2 = new THREE.SphereGeometry(10, 10, 10);//radius, width and height parameters
+            var material2 = new THREE.MeshNormalMaterial( { wireframe:true } );
+            var sphere2 = new THREE.Mesh( geometry2, material2 );//creating a mesh
+            sphere2.position.x = 40;
+            scene.add( sphere2 );
+            //sphere3
+            var geometry3 = new THREE.SphereGeometry(10, 10, 10);//radius, width and height parameters
+            var material3 = new THREE.MeshNormalMaterial( { wireframe:true } );
+            var sphere3 = new THREE.Mesh( geometry3, material3 );//creating a mesh
+            sphere3.position.x = -40;//they all start at the origin, so move the sphere to the left/right to be able to see them all.
+            scene.add( sphere3 );
 
             camera.position.z = 70;//set the camera position
             //before you render, create an animate function
@@ -55,6 +68,7 @@
             
              const animate = () => {
                 requestAnimationFrame( animate );
+                
                 // cube.rotation.x += 0.01;
                 // cube.rotation.y += 0.01;
                 renderer.render( scene, camera );
