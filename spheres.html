@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Three.js | Home</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+        <header class="header bg-dark m-0 p-3">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="/">Three Js</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="justify-content-end collapse navbar-collapse" id="navbarNavAltMarkup">
+                      <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/about">About</a>
+                        <a class="nav-item nav-link" href="#"> Get In Touch </a>
+                      </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <article class="" id="sphere">
+
+            </article>
+        </main>
+        
+        <!-- scripts -->
+        <script src="https://threejs.org/build/three.js"></script>
+        <script src="./js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+        <script>
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+            var geometry = new THREE.SphereGeometry(10, 10, 10);//radius, width and height parameters
+            var material = new THREE.MeshNormalMaterial( { wireframe:true } );
+            var sphere = new THREE.Mesh( geometry, material );//creating a mesh
+            scene.add( sphere );
+
+            camera.position.z = 70;//set the camera position
+            //before you render, create an animate function
+            
+            
+             const animate = () => {
+                requestAnimationFrame( animate );
+                // cube.rotation.x += 0.01;
+                // cube.rotation.y += 0.01;
+                renderer.render( scene, camera );
+            }
+            animate();
+
+            
+
+            // function animate() {
+            //     requestAnimationFrame( animate );
+            //     cube.rotation.x += 0.01;
+            //     cube.rotation.y += 0.01;
+            //     renderer.render( scene, camera );
+            // }
+            // 
+
+        </script>
+    </body>
+</html>
