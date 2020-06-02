@@ -66,6 +66,36 @@
 
             camera.position.z = 70;//set the camera position
 
+            const domEvents = new THREEx.DomEvents(camera, renderer.domElement)//click event binder and with this we can now add event listeners to any mesh.
+            let sphereClicked = false
+            domEvents.addEventListener(sphere, 'click', event=>{
+                // material.wireframe = false;
+                if (!sphereClicked){
+                material.wireframe = false
+                sphereClicked = true
+                } else {
+                material.wireframe = true
+                sphereClicked = false
+                }
+            })
+            
+            //adding event listener on sphere 2
+            domEvents.addEventListener(sphere2, 'mouseover', event=>{
+                sphere2.material.wireframe = false
+            })
+            domEvents.addEventListener(sphere2, 'mouseout', event=>{
+                sphere2.material.wireframe = true
+            })
+
+            //adding event listener on sphere 3 
+            domEvents.addEventListener(sphere3, 'mouseover', event=>{
+                sphere3.scale.set(.5, .5, .5)
+            })
+            domEvents.addEventListener(sphere3, 'mouseout', event=>{
+                sphere3.scale.set(1,1,1)
+            })
+
+            // OrbitControls
             controls = new THREE.OrbitControls(camera, renderer.domElement)
             controls.minDistance = 1
             controls.maxDistance = 1000

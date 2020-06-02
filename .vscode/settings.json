@@ -1,6 +1,10 @@
 {
     "cSpell.ignoreWords": [
+        "ex",
         "renderer",
+        "thre",
+        "thre ex",
         "wireframe"
-    ]
+    ],
+    "liveServer.settings.port": 5502
 }
